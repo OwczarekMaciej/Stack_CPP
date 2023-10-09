@@ -1,13 +1,14 @@
 #include "Stack.h"
 #include <iostream>
 
-#define SIZE 4
+#define SIZE 1
 
 Stack::Stack()
 {
     top_element = 0;
     size = SIZE;
     array = (int*)malloc(sizeof(int) * size);
+    isAlloc();
 }
 
 Stack::~Stack()
@@ -22,6 +23,7 @@ void Stack::push(int element)
     {
         size *= 2;
         array = (int *)realloc(array, sizeof(int) * size);
+        isAlloc();
         std::cout << "Stack size increased to " << size << std::endl;;
     }
     array[top_element++] = element;
@@ -43,4 +45,13 @@ int Stack::pop()
     top_element--;
     std::cout << "Popped " << array[top_element] << " from stack" << std::endl;
     return array[top_element];
+}
+
+void Stack::isAlloc()
+{
+    if(array == NULL)
+    {
+        std::cout << "Wrong memory alloc" << std::endl;
+        abort();
+    }
 }
