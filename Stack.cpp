@@ -4,9 +4,8 @@
 #define SIZE 1
 
 Stack::Stack()
+    : top_element(0), size(SIZE)
 {
-    top_element = 0;
-    size = SIZE;
     array = (int *)malloc(sizeof(int) * size);
     alloc_check();
     std::cout << "Stack initialized" << std::endl;
