@@ -16,7 +16,7 @@ private:
     int top_element;
     int size;
     int *array;
-    void isAlloc();
+    void alloc_check();
 };
 
 #endif

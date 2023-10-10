@@ -8,7 +8,7 @@ Stack::Stack()
     top_element = 0;
     size = SIZE;
     array = (int*)malloc(sizeof(int) * size);
-    isAlloc();
+    alloc_check();
 }
 
 Stack::~Stack()
@@ -23,7 +23,7 @@ void Stack::push(int element)
     {
         size *= 2;
         array = (int *)realloc(array, sizeof(int) * size);
-        isAlloc();
+        alloc_check();
         std::cout << "Stack size increased to " << size << std::endl;;
     }
     array[top_element++] = element;
@@ -47,7 +47,7 @@ int Stack::pop()
     return array[top_element];
 }
 
-void Stack::isAlloc()
+void Stack::alloc_check()
 {
     if(array == NULL)
     {
